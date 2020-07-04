@@ -62,7 +62,7 @@ void display(void)
 	/* Add drawing parts here */
 	DisplayBackWall();
 	DisplayWindow();
-	DisplayWindowShutters();
+	//DisplayWindowShutters();
 
 	glFlush();
 }
