@@ -8,5 +8,8 @@ RTR2020: DomainShader group demo for guru pournima
 - Commit and push to your forked repo
 - Raise Pull Request for your changes
 
-
+# Run
+- Use Visual Studio's developer console
+- CD into this directory
+- run *build.bat* to execute the program
 
