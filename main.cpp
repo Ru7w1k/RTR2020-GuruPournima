@@ -1,4 +1,5 @@
 #include <GL\freeglut.h>
+#include "Backwall.h"
 
 bool bFullscreen = false;
 
@@ -56,8 +57,12 @@ void display(void)
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	
 
 	/* Add drawing parts here */
+	DisplayBackWall();
+	DisplayWindow();
+	//DisplayWindowShutters();
 
 	glFlush();
 }
