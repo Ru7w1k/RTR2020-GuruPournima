@@ -1,6 +1,7 @@
 // header files
 #include <windows.h>
 #include <GL\freeglut.h>
+#include "Backwall.h"
 
 #include "resource.h"
 
@@ -70,8 +71,12 @@ void display(void)
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	
 
 	/* Add drawing parts here */
+	DisplayBackWall();
+	DisplayWindow();
+	//DisplayWindowShutters();
 
 	glFlush();
 }
