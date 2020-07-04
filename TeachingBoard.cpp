@@ -44,6 +44,4 @@ void DrawTeachingBoard(void)
 		glVertex3f(widthTeachingBoard/2.0f, topOfTeachingBoard - heightOfTeachingBoard, 0.0f);
 		glVertex3f(widthTeachingBoard/2.0f, topOfTeachingBoard, 0.0f);
 	glEnd();
-	
-	glFlush();
 }
