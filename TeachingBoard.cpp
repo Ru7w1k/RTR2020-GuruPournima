@@ -10,13 +10,7 @@ void DrawTeachingBoard(void)
 {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	
-	glBegin(GL_LINES);
-		glColor3f(0.25f, 0.5f, 0.5f);
-		glVertex3f(-1.f, -0.2f, 0.0f);
-		glVertex3f(1.f, -0.2f, 0.0f);
-	glEnd();
-	
+			
 	//Border 
 	glBegin(GL_QUADS);
 		glColor3fv(borderColor);
