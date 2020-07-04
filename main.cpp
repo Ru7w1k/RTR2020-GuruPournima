@@ -1,4 +1,5 @@
 #include <GL\freeglut.h>
+#include "TeachingBoard.h"
 
 bool bFullscreen = false;
 
@@ -58,7 +59,8 @@ void display(void)
 	glLoadIdentity();
 
 	/* Add drawing parts here */
-
+	DrawTeachingBoard();
+	
 	glFlush();
 }
 
