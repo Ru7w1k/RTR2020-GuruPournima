@@ -1,10 +1,18 @@
+// header files
+#include <windows.h>
 #include <GL\freeglut.h>
 
+#include "resource.h"
+
+// libraries
+#pragma comment(lib, "winmm.lib") // for PlaySound()
+
+// gloabal variables
 bool bFullscreen = false;
 
+// entry-point function
 int main(int argc, char** argv)
 {
-	// code
 	// function declarations
 	void initialize(void);
 	void resize(int, int);
@@ -12,6 +20,7 @@ int main(int argc, char** argv)
 	void keyboard(unsigned char, int, int);
 	void uninitialize(void);
 
+	// code
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
 	glutInitWindowSize(800, 600);
@@ -34,6 +43,11 @@ void initialize(void)
 {
 	// code
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+	// play backgroud theme song
+	PlaySound(MAKEINTRESOURCE(IDWAV_GURUMANTRA), // ID of WAVE resource
+		GetModuleHandle(NULL), 					 // handle of this module, which contains the resource
+		SND_RESOURCE | SND_ASYNC);				 // ID is of type resource | play async (i.e. non-blocking)
 
 }
 
