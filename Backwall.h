@@ -1,4 +1,5 @@
 #include <GL\freeglut.h>
+#include<math.h>
 
 void DisplayBackWall()
 {    
@@ -17,13 +18,14 @@ void DisplayBackWall()
         glColor3f(1.0f, 1.0f, 0.8f);
         glVertex3f (0.80, -0.15, 0.0);       
     glEnd();
-    glFlush();
+ 
 }
 
 void DisplayWindow()
 {
     void DisplayWindowShutters(float x, float y, float length, float height);    
     void DiplayWindowSubsection();
+    void DisplayArch();
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glBegin(GL_POLYGON);
@@ -47,8 +49,8 @@ void DisplayWindow()
     DisplayWindowShutters(0.13, 0.66, 0.075, 0.08);    
 
     DiplayWindowSubsection();
-
-    glFlush();
+    DisplayArch();
+ 
 }
 
 void DisplayWindowShutters(float x, float y, float length, float height)
@@ -67,7 +69,7 @@ void DisplayWindowShutters(float x, float y, float length, float height)
         glColor3f(0.0f, 0.3f, 1.0f);
         glVertex3f (x + length, y, 0.0);       
     glEnd();
-    glFlush();
+ 
 }
 
 void DiplayWindowSubsection()
@@ -84,5 +86,11 @@ void DiplayWindowSubsection()
         glVertex3f (0.21, -0.15, 0.0);
         glVertex3f (0.21, 0.65, 0.0);
     glEnd();
-    glFlush();   
+   
+}
+
+void DisplayArch()
+{
+    
+ 
 }
