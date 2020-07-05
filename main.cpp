@@ -1,7 +1,16 @@
 // header files
 #include <windows.h>
 #include <GL\freeglut.h>
+
 #include "Backwall.h"
+#include "Floor.h"
+#include "ChairCarpet.h"
+#include "TeachingBoard.h"
+#include "RightWall.h"
+#include "LeftWall.h"
+#include "Ceiling.h"
+#include "Chair.h"
+#include "Draw_Door.h"
 
 #include "resource.h"
 
@@ -20,6 +29,7 @@ int main(int argc, char** argv)
 	void display(void);
 	void keyboard(unsigned char, int, int);
 	void uninitialize(void);
+	void timerFunc(int);
 
 	// code
 	glutInit(&argc, argv);
@@ -33,8 +43,9 @@ int main(int argc, char** argv)
 	glutDisplayFunc(display);
 	glutReshapeFunc(resize);
 	glutKeyboardFunc(keyboard);
+	glutTimerFunc(10, timerFunc, 1);
 	glutCloseFunc(uninitialize);
-
+	
 	glutMainLoop();
 
 	return(0);  // this line is not necessary
@@ -71,12 +82,26 @@ void display(void)
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	
+
 
 	/* Add drawing parts here */
+	DisplayCeiling();
+
 	DisplayBackWall();
+
+	DisplayFloor();
+
 	DisplayWindow();
-	//DisplayWindowShutters();
+	DisplayChairCarpet();
+	DrawTeachingBoard();
+
+	Draw_LeftWall();
+	DisplayRightWall(2.0, 2.0);
+
+	Draw_Door();
+
+	DisplayChair();
+	Draw_Door();
 
 	glFlush();
 }
@@ -112,4 +137,10 @@ void keyboard(unsigned char key, int x, int y)
 void uninitialize(void)
 {
 	// code
+}
+void timerFunc(int speed)
+{
+	AnimateBoard();
+	glutPostRedisplay();
+	glutTimerFunc(10, timerFunc, 1);
 }
