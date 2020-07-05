@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <GL\freeglut.h>
 #include "Backwall.h"
-
+#include "RightWall.h"
 #include "resource.h"
 
 // libraries
@@ -77,7 +77,7 @@ void display(void)
 	DisplayBackWall();
 	DisplayWindow();
 	//DisplayWindowShutters();
-
+	DisplayRightWall(2.0,2.0);
 	glFlush();
 }
 
