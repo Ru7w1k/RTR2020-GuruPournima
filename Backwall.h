@@ -1,4 +1,3 @@
-#include <GL\freeglut.h>
 #include<math.h>
 
 void DisplayBackWall()
@@ -104,6 +103,7 @@ void DisplayArch()
 
     }
    glEnd();
+   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
  
 }
 

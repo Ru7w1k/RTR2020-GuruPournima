@@ -1,4 +1,3 @@
-#include <GL\freeglut.h>
 #include<math.h>
 
 
@@ -21,5 +20,4 @@ void DisplayRightWall(float roomWidth, float roomHeight){
 	glVertex3f(0.3*roomWidth, -0.1 * roomHeight, 0.0f);
 
 	glEnd();
-//	glFlush();
 }

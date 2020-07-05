@@ -1,4 +1,3 @@
-#include<GL/glut.h>
 
 void Draw_Door(void);
 
