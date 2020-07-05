@@ -12,6 +12,7 @@
 #include "Chair.h"
 #include "Draw_Door.h"
 #include "Carpet.h"
+#include "FadeOutRect.h"
 
 #include "resource.h"
 
@@ -31,6 +32,9 @@ float scaleCarpet = 0.0f;
 float aplhaChairCarpet = 0.0f;
 float alphaChair = 0.0f;
 float yOffsetCarpet = -1.0f;
+float alphaFadeOut = 0.0f;
+
+int fadeOutDelay = 0;
 
 // entry-point function
 int main(int argc, char** argv)
@@ -148,6 +152,11 @@ void display(void)
 	
 	glScalef(0.35f, 0.55f, 0.5f);
 	DisplayChair(alphaChair);
+
+	glLoadIdentity();
+
+	if (alphaChair >= 1.0f)
+		DrawFadeOutRect(alphaFadeOut);
   
 	glFlush();
 }
@@ -195,7 +204,7 @@ void timerFunc(int speed)
 		case 0:
 			if (yOffset > 0.0f)
 			{
-				yOffset -= 0.01f;
+				yOffset -= 0.005f;
 			}
 			else
 			{
@@ -207,7 +216,7 @@ void timerFunc(int speed)
 		/* back wall */
 		case 1:
 			if (scaleBackWall < 1.0f)
-				scaleBackWall += 0.01f;
+				scaleBackWall += 0.005f;
 			else
 			{
 				scaleBackWall = 1.0f;
@@ -218,7 +227,7 @@ void timerFunc(int speed)
 		/* side walls */
 		case 2:
 			if (xOffsetWall > 0.0f)
-				xOffsetWall -= 0.01f;
+				xOffsetWall -= 0.005f;
 			else
 			{
 				xOffsetWall = 0.0f;
@@ -227,6 +236,7 @@ void timerFunc(int speed)
 		break;
 
 		/* floor */
+
 		case 3:
 			if (yOffsetFloor > 0.0f)
 				yOffsetFloor -= 0.005f;
@@ -240,7 +250,7 @@ void timerFunc(int speed)
 		/* window */
 		case 4:
 			if (alphaWindow < 1.0f)
-				alphaWindow += 0.01f;
+				alphaWindow += 0.005f;
 			else
 			{
 				alphaWindow = 1.0f;
@@ -251,7 +261,7 @@ void timerFunc(int speed)
 		/* doors */
 		case 5:
 			if (alphaDoor < 1.0f)
-				alphaDoor += 0.01f;
+				alphaDoor += 0.005f;
 			else
 			{
 				alphaDoor = 1.0f;
@@ -268,7 +278,7 @@ void timerFunc(int speed)
 		/* main carpet */
 		case 7:
 			if (yOffsetCarpet < 0.0f)
-				yOffsetCarpet += 0.01f;
+				yOffsetCarpet += 0.005f;
 			else
 			{
 				yOffsetCarpet = 0.0f;
@@ -279,7 +289,7 @@ void timerFunc(int speed)
 		/* carpet under chair */
 		case 8:
 			if (scaleCarpet < 1.0f)
-				scaleCarpet += 0.01f;
+				scaleCarpet += 0.005f;
 			else
 			{
 				scaleCarpet = 1.0f;
@@ -290,14 +300,40 @@ void timerFunc(int speed)
 		/* chair */
 		case 9:
 			if (alphaChair < 1.0f)
-				alphaChair += 0.01f;
+				alphaChair += 0.0075f;
 			else
 			{
 				alphaChair = 1.0f;
 				state++;
 			}
 		break;
+				
+		/* fade out delay */
+		case 10:
+			if (fadeOutDelay < 1000)
+				fadeOutDelay++;
+			else
+				state++;
+		break;
 
+		/* fade out */
+		case 11:
+			if (alphaFadeOut < 1.0f)
+				alphaFadeOut += 0.005f;
+			else
+			{
+				alphaFadeOut = 1.0f;
+				state++;
+			}
+		break;
+
+		/* exit! */
+		case 12:
+			if (fadeOutDelay < 1200)
+				fadeOutDelay++;
+			else
+				glutLeaveMainLoop();
+		break;
 
 	}
 
