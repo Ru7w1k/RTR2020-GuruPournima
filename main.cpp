@@ -1,14 +1,17 @@
 // header files
 #include <windows.h>
 #include <GL\freeglut.h>
+
 #include "Backwall.h"
+#include "Floor.h"
 #include "ChairCarpet.h"
 #include "TeachingBoard.h"
-#include "resource.h"
 #include "RightWall.h"
-
 #include "Ceiling.h"
 #include "Chair.h"
+#include "Draw_Door.h"
+
+#include "resource.h"
 
 // libraries
 #pragma comment(lib, "winmm.lib") // for PlaySound()
@@ -82,13 +85,13 @@ void display(void)
 	DisplayCeiling();
 
 	DisplayBackWall();
+  DisplayFloor();
 	DisplayWindow();
-
-	//DisplayWindowShutters();
 	DisplayChairCarpet();
 	DrawTeachingBoard();
 	DisplayRightWall(2.0,2.0);
 	DisplayChair();
+	Draw_Door();
   
 	glFlush();
 }
