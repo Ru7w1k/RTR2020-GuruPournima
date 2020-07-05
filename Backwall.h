@@ -20,68 +20,68 @@ void DisplayBackWall()
  
 }
 
-void DisplayWindow()
+void DisplayWindow(float alpha)
 {
-    void DisplayWindowShutters(float x, float y, float length, float height);    
-    void DiplayWindowSubsection();
+    void DisplayWindowShutters(float x, float y, float length, float height, float);    
+    void DiplayWindowSubsection(float);
     void DisplayArch();
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glBegin(GL_POLYGON);
-        glColor3f(0.6f, 0.3f, 0.0f);
+        glColor4f(0.6f, 0.3f, 0.0f, alpha);
         glVertex3f (-0.20, 0.55, 0.00);
         
-        glColor3f(0.6f, 0.3f, 0.0f);
+        glColor4f(0.6f, 0.3f, 0.0f, alpha);
         glVertex3f (-0.20, 0.65, 0.00);
         
-        glColor3f(0.6f, 0.3f, 0.0f);
+        glColor4f(0.6f, 0.3f, 0.0f, alpha);
         glVertex3f (0.215, 0.65, 0.00);    
         
-        glColor3f(0.6f, 0.3f, 0.0f);
+        glColor4f(0.6f, 0.3f, 0.0f, alpha);
         glVertex3f (0.215, 0.55, 0.00);       
     glEnd();
 
-    DisplayWindowShutters(-0.19, 0.56, 0.075, 0.08);
-    DisplayWindowShutters(-0.11, 0.56, 0.075, 0.08);
-    DisplayWindowShutters(-0.03, 0.56, 0.075, 0.08);
-    DisplayWindowShutters(0.05, 0.56, 0.075, 0.08);
-    DisplayWindowShutters(0.13, 0.56, 0.075, 0.08);    
+    DisplayWindowShutters(-0.19, 0.56, 0.075, 0.08, alpha);
+    DisplayWindowShutters(-0.11, 0.56, 0.075, 0.08, alpha);
+    DisplayWindowShutters(-0.03, 0.56, 0.075, 0.08, alpha);
+    DisplayWindowShutters(0.05, 0.56, 0.075, 0.08, alpha);
+    DisplayWindowShutters(0.13, 0.56, 0.075, 0.08, alpha);
 
-    DiplayWindowSubsection();
+    DiplayWindowSubsection(alpha);
     DisplayArch();
  
 }
 
-void DisplayWindowShutters(float x, float y, float length, float height)
+void DisplayWindowShutters(float x, float y, float length, float height, float alpha)
 {    
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glBegin(GL_POLYGON);
-        glColor3f(0.0f, 0.3f, 1.0f);
+        glColor4f(0.0f, 0.3f, 1.0f, alpha);
         glVertex3f (x, y, 0.0);
         
-        glColor3f(0.0f, 0.3f, 1.0f);
+        glColor4f(0.0f, 0.3f, 1.0f, alpha);
         glVertex3f (x, y + height, 0.0);
         
-        glColor3f(0.0f, 0.3f, 1.0f);
+        glColor4f(0.0f, 0.3f, 1.0f, alpha);
         glVertex3f (x + length, y + height, 0.0);    
         
-        glColor3f(0.0f, 0.3f, 1.0f);
+        glColor4f(0.0f, 0.3f, 1.0f, alpha);
         glVertex3f (x + length, y, 0.0);       
     glEnd();
  
 }
 
-void DiplayWindowSubsection()
+void DiplayWindowSubsection(float alpha)
 {
     glLineWidth(2.0);
     glBegin(GL_LINES);
-        glColor3f(0.5f, 0.2f, 0.0f);
+        glColor4f(0.5f, 0.2f, 0.0f, alpha);
         glVertex3f (-0.198, -0.20, 0.0);
         glVertex3f (-0.198, 0.55, 0.0);
     glEnd();
 
      glBegin(GL_LINES);
-        glColor3f(0.5f, 0.2f, 0.0f);
+        glColor4f(0.5f, 0.2f, 0.0f, alpha);
         glVertex3f (0.21, -0.20, 0.0);
         glVertex3f (0.21, 0.55, 0.0);
     glEnd();

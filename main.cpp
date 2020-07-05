@@ -19,6 +19,13 @@
 // gloabal variables
 bool bFullscreen = false;
 
+float yOffset = 1.0f;
+float scaleBackWall = 0.0f;
+float xOffsetWall = 1.0f;
+float yOffsetFloor = 1.0f;
+float alphaWindow = 0.0f;
+float alphaDoor = 0.0f;
+
 // entry-point function
 int main(int argc, char** argv)
 {
@@ -42,9 +49,10 @@ int main(int argc, char** argv)
 	glutDisplayFunc(display);
 	glutReshapeFunc(resize);
 	glutKeyboardFunc(keyboard);
-	glutTimerFunc(10, timerFunc, 1);
+	glutTimerFunc(15, timerFunc, 1);
 	glutCloseFunc(uninitialize);
 	
+	glutFullScreen();
 	glutMainLoop();
 
 	return(0);  // this line is not necessary
@@ -54,6 +62,10 @@ void initialize(void)
 {
 	// code
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+	/* enable blending */
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// play backgroud theme song
 	PlaySound(MAKEINTRESOURCE(IDWAV_GURUMANTRA), // ID of WAVE resource
@@ -84,20 +96,39 @@ void display(void)
 	
 
 	/* Add drawing parts here */
+
+
+	glTranslatef(0.0f, yOffset, 0.0f);
 	DisplayCeiling();
 
+	glLoadIdentity();
+
+	glScalef(scaleBackWall, scaleBackWall, scaleBackWall);
 	DisplayBackWall();
 
+	glLoadIdentity();
+
+	glTranslatef(xOffsetWall, 0.0f, 0.0f);
+	DisplayRightWall(2.0,2.0);
+	// TODO: add left wall here 
+
+	glLoadIdentity();
+
+	glTranslatef(0.0f, -yOffsetFloor, 0.0f);
 	DisplayFloor();
 
-	DisplayWindow();
-	DisplayChairCarpet();
-	DrawTeachingBoard();
-	DisplayRightWall(2.0,2.0);
-	Draw_Door();
+	glLoadIdentity();
+
+	DisplayWindow(alphaWindow);
 	
-	glScalef(0.4f, 0.6f, 0.5f);
-	DisplayChair();
+	Draw_Door(alphaDoor);
+
+	DrawTeachingBoard();
+
+	// DisplayChairCarpet();
+	
+	// glScalef(0.4f, 0.6f, 0.5f);
+	// DisplayChair();
   
 	glFlush();
 }
@@ -134,9 +165,98 @@ void uninitialize(void)
 {
 	// code
 }
+
 void timerFunc(int speed)
 {
-	AnimateBoard();
+	static int state = 0;
+
+	switch (state)
+	{
+		/* ceiling */
+		case 0:
+			if (yOffset > 0.0f)
+			{
+				yOffset -= 0.01f;
+			}
+			else
+			{
+				yOffset = 0.0f;
+				state++;
+			}
+		break;
+
+		/* back wall */
+		case 1:
+			if (scaleBackWall < 1.0f)
+				scaleBackWall += 0.01f;
+			else
+			{
+				scaleBackWall = 1.0f;
+				state++;
+			}
+		break;
+
+		/* side walls */
+		case 2:
+			if (xOffsetWall > 0.0f)
+				xOffsetWall -= 0.01f;
+			else
+			{
+				xOffsetWall = 0.0f;
+				state++;
+			}
+		break;
+
+		/* floor */
+		case 3:
+			if (yOffsetFloor > 0.0f)
+				yOffsetFloor -= 0.01f;
+			else
+			{
+				yOffsetFloor = 0.0f;
+				state++;
+			}
+		break;
+
+		/* window */
+		case 4:
+			if (alphaWindow < 1.0f)
+				alphaWindow += 0.01f;
+			else
+			{
+				alphaWindow = 1.0f;
+				state++;
+			}
+		break;
+
+		/* doors */
+		case 5:
+			if (alphaDoor < 1.0f)
+				alphaDoor += 0.01f;
+			else
+			{
+				alphaDoor = 1.0f;
+				state++;
+			}
+		break;
+
+		/* board */
+		case 6:
+			if (AnimateBoard() == TRUE)
+				state++;
+		break;
+	}
+
+
+
+
+
+
+	
+
+
+
+
 	glutPostRedisplay();
-	glutTimerFunc(10, timerFunc, 1);
+	glutTimerFunc(15, timerFunc, 1);
 }

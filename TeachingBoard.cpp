@@ -55,11 +55,16 @@ void DrawTeachingBoard(void)
 	// glEnd();	
 }
 
-void AnimateBoard(void)
+BOOL AnimateBoard(void)
 {
-	if(widthTeachingBoard < 0.5)
+	if(widthTeachingBoard < 0.45)
 		widthTeachingBoard += 0.001;
 	
 	if(heightOfTeachingBoard < 0.5)
 		heightOfTeachingBoard += 0.001;
+
+	if(heightOfTeachingBoard > 0.5 && heightOfTeachingBoard > 0.5)
+		return TRUE;
+
+	return FALSE;
 }
