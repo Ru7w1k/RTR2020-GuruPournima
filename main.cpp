@@ -74,8 +74,10 @@ void display(void)
 	
 
 	/* Add drawing parts here */
+	DisplayCeilling();
 	DisplayBackWall();
 	DisplayWindow();
+
 	//DisplayWindowShutters();
 
 	glFlush();
