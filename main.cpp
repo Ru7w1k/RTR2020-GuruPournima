@@ -26,6 +26,9 @@ float xOffsetWall = 1.0f;
 float yOffsetFloor = 1.0f;
 float alphaWindow = 0.0f;
 float alphaDoor = 0.0f;
+float scaleCarpet = 0.0f;
+float aplhaChairCarpet = 0.0f;
+float alphaChair = 0.0f;
 
 // entry-point function
 int main(int argc, char** argv)
@@ -111,8 +114,12 @@ void display(void)
 
 	glTranslatef(xOffsetWall, 0.0f, 0.0f);
 	DisplayRightWall(2.0,2.0);
-	// TODO: add left wall here 
 
+	glLoadIdentity();
+
+	glTranslatef(-xOffsetWall, 0.0f, 0.0f);
+	Draw_LeftWall();
+	
 	glLoadIdentity();
 
 	glTranslatef(0.0f, -yOffsetFloor, 0.0f);
@@ -126,11 +133,14 @@ void display(void)
 
 	DrawTeachingBoard();
 
-	Draw_LeftWall();
-	// DisplayChairCarpet();
+	glLoadIdentity();
+
+	//glTranslatef(0.0f, -0.4f, 0.0f);
+	glScalef(1.0f, scaleCarpet, 1.0f);
+	DisplayChairCarpet(1.0f);
 	
-	// glScalef(0.4f, 0.6f, 0.5f);
-	// DisplayChair();
+	glScalef(0.35f, 0.55f, 0.5f);
+	DisplayChair(alphaChair);
   
 	glFlush();
 }
@@ -246,6 +256,34 @@ void timerFunc(int speed)
 		case 6:
 			if (AnimateBoard() == TRUE)
 				state++;
+		break;
+
+		/* main carpet */
+		case 7:
+			state++;
+
+		break;
+
+		/* carpet under chair */
+		case 8:
+			if (scaleCarpet < 1.0f)
+				scaleCarpet += 0.01f;
+			else
+			{
+				scaleCarpet = 1.0f;
+				state++;
+			}
+		break;
+
+		/* chair */
+		case 9:
+			if (alphaChair < 1.0f)
+				alphaChair += 0.01f;
+			else
+			{
+				alphaChair = 1.0f;
+				state++;
+			}
 		break;
 	}
 

@@ -57,7 +57,7 @@ void DrawTeachingBoard(void)
 
 BOOL AnimateBoard(void)
 {
-	if(widthTeachingBoard < 0.45)
+	if(widthTeachingBoard < 0.5)
 		widthTeachingBoard += 0.001;
 	
 	if(heightOfTeachingBoard < 0.5)
