@@ -1,6 +1,6 @@
 #include "TeachingBoard.h"
 
-GLfloat widthTeachingBoard = 0.5f, topOfTeachingBoard = 0.60f, heightOfTeachingBoard = 0.5f;//Change width & height to 0.001f when using AnimateBoard()
+GLfloat widthTeachingBoard = 0.001f, topOfTeachingBoard = 0.60f, heightOfTeachingBoard = 0.001f;//Change width & height to 0.001f when using AnimateBoard()
 GLfloat borderMargin = 0.005f;
 GLfloat borderColor[] = {0.35f, 0.35f, 0.25f};
 GLfloat boardColor[] = {0.25f, 0.25f, 0.25f};
