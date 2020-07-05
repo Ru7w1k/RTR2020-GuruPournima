@@ -28,6 +28,7 @@ int main(int argc, char** argv)
 	void display(void);
 	void keyboard(unsigned char, int, int);
 	void uninitialize(void);
+	void timerFunc(int);
 
 	// code
 	glutInit(&argc, argv);
@@ -41,8 +42,9 @@ int main(int argc, char** argv)
 	glutDisplayFunc(display);
 	glutReshapeFunc(resize);
 	glutKeyboardFunc(keyboard);
+	glutTimerFunc(10, timerFunc, 1);
 	glutCloseFunc(uninitialize);
-
+	
 	glutMainLoop();
 
 	return(0);  // this line is not necessary
@@ -85,7 +87,9 @@ void display(void)
 	DisplayCeiling();
 
 	DisplayBackWall();
-  DisplayFloor();
+
+	DisplayFloor();
+
 	DisplayWindow();
 	DisplayChairCarpet();
 	DrawTeachingBoard();
@@ -127,4 +131,10 @@ void keyboard(unsigned char key, int x, int y)
 void uninitialize(void)
 {
 	// code
+}
+void timerFunc(int speed)
+{
+	AnimateBoard();
+	glutPostRedisplay();
+	glutTimerFunc(10, timerFunc, 1);
 }
