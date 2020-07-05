@@ -1,6 +1,6 @@
 #include<GL\freeglut.h>
 
-void DisplayFlower()
+void DisplayFlower(float alpha)
 {  
     glLineWidth(1.5);
     
@@ -17,7 +17,7 @@ void DisplayFlower()
     float y = -0.60f;
     
     glBegin(GL_LINES);
-	    glColor3f(0.278f,0.157f,1.00f);      
+	    glColor4f(0.9215f, 0.8784f, 0.0549f, alpha);
      
 
          glVertex2f(x + 0.0, y + 0.20f);
@@ -49,7 +49,7 @@ void DisplayFlower()
     y = -0.90f;
     
     glBegin(GL_LINES);
-	    glColor3f(0.278f,0.157f,1.00f);      
+	    glColor4f(0.9215f, 0.8784f, 0.0549f, alpha);
      
 
          glVertex2f(x + 0.0, y + 0.20f);
@@ -82,7 +82,7 @@ void DisplayFlower()
     y = -0.60f;
     
     glBegin(GL_LINES);
-	    glColor3f(0.278f,0.157f,1.00f);      
+	    glColor4f(0.9215f, 0.8784f, 0.0549f, alpha);
      
 
          glVertex2f(x + 0.0, y + 0.20f);

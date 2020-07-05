@@ -13,6 +13,7 @@
 #include "Draw_Door.h"
 #include "Carpet.h"
 #include "FadeOutRect.h"
+#include "Flowers.h"
 
 #include "resource.h"
 
@@ -33,6 +34,8 @@ float aplhaChairCarpet = 0.0f;
 float alphaChair = 0.0f;
 float yOffsetCarpet = -1.0f;
 float alphaFadeOut = 0.0f;
+float alphaFlowers = 0.0f;
+float yOffsetFlower = 0.2f;
 
 int fadeOutDelay = 0;
 
@@ -152,6 +155,12 @@ void display(void)
 	
 	glScalef(0.35f, 0.55f, 0.5f);
 	DisplayChair(alphaChair);
+
+	glLoadIdentity();
+
+	glTranslatef(0.0f, -0.325f + yOffsetFlower, 0.0f);
+	glScalef(0.10f, 0.15f, 1.0f);
+	DisplayFlower(alphaFlowers);
 
 	glLoadIdentity();
 
@@ -307,9 +316,23 @@ void timerFunc(int speed)
 				state++;
 			}
 		break;
+
+		/* flowers */
+		case 10:
+			if (yOffsetFlower > 0.0f)
+				yOffsetFlower -= 0.005;
+
+			if (alphaFlowers < 1.0f)
+				alphaFlowers += 0.0075f;
+			else
+			{
+				alphaFlowers = 1.0f;
+				state++;
+			}
+		break;
 				
 		/* fade out delay */
-		case 10:
+		case 11:
 			if (fadeOutDelay < 1000)
 				fadeOutDelay++;
 			else
@@ -317,7 +340,7 @@ void timerFunc(int speed)
 		break;
 
 		/* fade out */
-		case 11:
+		case 12:
 			if (alphaFadeOut < 1.0f)
 				alphaFadeOut += 0.005f;
 			else
@@ -328,7 +351,7 @@ void timerFunc(int speed)
 		break;
 
 		/* exit! */
-		case 12:
+		case 13:
 			if (fadeOutDelay < 1200)
 				fadeOutDelay++;
 			else
