@@ -7,6 +7,7 @@
 #include "ChairCarpet.h"
 #include "TeachingBoard.h"
 #include "RightWall.h"
+#include "LeftWall.h"
 #include "Ceiling.h"
 #include "Chair.h"
 #include "Draw_Door.h"
@@ -93,7 +94,7 @@ void display(void)
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	
+
 
 	/* Add drawing parts here */
 
@@ -125,6 +126,7 @@ void display(void)
 
 	DrawTeachingBoard();
 
+	Draw_LeftWall();
 	// DisplayChairCarpet();
 	
 	// glScalef(0.4f, 0.6f, 0.5f);
