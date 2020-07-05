@@ -87,7 +87,9 @@ void display(void)
 	DisplayCeiling();
 
 	DisplayBackWall();
+
 	DisplayFloor();
+
 	DisplayWindow();
 	DisplayChairCarpet();
 	DrawTeachingBoard();
