@@ -8,6 +8,7 @@
 #include "RightWall.h"
 
 #include "Ceiling.h"
+#include "Chair.h"
 
 // libraries
 #pragma comment(lib, "winmm.lib") // for PlaySound()
@@ -86,7 +87,8 @@ void display(void)
 	//DisplayWindowShutters();
 	DisplayChairCarpet();
 	DrawTeachingBoard();
-  DisplayRightWall(2.0,2.0);
+	DisplayRightWall(2.0,2.0);
+	DisplayChair();
   
 	glFlush();
 }
