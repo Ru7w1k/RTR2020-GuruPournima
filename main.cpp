@@ -2,8 +2,9 @@
 #include <windows.h>
 #include <GL\freeglut.h>
 #include "Backwall.h"
-
 #include "resource.h"
+
+#include "Ceiling.h"
 
 // libraries
 #pragma comment(lib, "winmm.lib") // for PlaySound()
@@ -74,7 +75,7 @@ void display(void)
 	
 
 	/* Add drawing parts here */
-	DisplayCeilling();
+	DisplayCeiling();
 	DisplayBackWall();
 	DisplayWindow();
 
