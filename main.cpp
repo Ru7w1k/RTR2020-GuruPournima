@@ -7,6 +7,8 @@
 #include "resource.h"
 #include "RightWall.h"
 
+#include "Ceiling.h"
+
 // libraries
 #pragma comment(lib, "winmm.lib") // for PlaySound()
 
@@ -76,9 +78,11 @@ void display(void)
 	
 
 	/* Add drawing parts here */
+	DisplayCeiling();
 
 	DisplayBackWall();
 	DisplayWindow();
+
 	//DisplayWindowShutters();
 	DisplayChairCarpet();
 	DrawTeachingBoard();
