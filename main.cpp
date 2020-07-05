@@ -4,6 +4,7 @@
 #include "Backwall.h"
 #include "TeachingBoard.h"
 #include "resource.h"
+#include "RightWall.h"
 
 // libraries
 #pragma comment(lib, "winmm.lib") // for PlaySound()
@@ -79,7 +80,8 @@ void display(void)
 	DisplayWindow();
 	//DisplayWindowShutters();
 	DrawTeachingBoard();
-
+  DisplayRightWall(2.0,2.0);
+  
 	glFlush();
 }
 
