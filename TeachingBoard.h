@@ -1,0 +1,1 @@
+void DrawTeachingBoard(void);

@@ -2,7 +2,10 @@
 #include <windows.h>
 #include <GL\freeglut.h>
 #include "Backwall.h"
+#include "ChairCarpet.h"
+#include "TeachingBoard.h"
 #include "resource.h"
+#include "RightWall.h"
 
 #include "Ceiling.h"
 
@@ -76,11 +79,15 @@ void display(void)
 
 	/* Add drawing parts here */
 	DisplayCeiling();
+
 	DisplayBackWall();
 	DisplayWindow();
 
 	//DisplayWindowShutters();
-
+	DisplayChairCarpet();
+	DrawTeachingBoard();
+  DisplayRightWall(2.0,2.0);
+  
 	glFlush();
 }
 
