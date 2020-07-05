@@ -7,6 +7,7 @@
 #include "ChairCarpet.h"
 #include "TeachingBoard.h"
 #include "RightWall.h"
+#include "LeftWall.h"
 #include "Ceiling.h"
 
 #include "resource.h"
@@ -87,6 +88,7 @@ void display(void)
 	DisplayWindow();
 	DisplayChairCarpet();
 	DrawTeachingBoard();
+	Draw_LeftWall();
   DisplayRightWall(2.0,2.0);
   
 	glFlush();
