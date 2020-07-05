@@ -85,13 +85,15 @@ void display(void)
 	DisplayCeiling();
 
 	DisplayBackWall();
-  DisplayFloor();
+	DisplayFloor();
 	DisplayWindow();
 	DisplayChairCarpet();
 	DrawTeachingBoard();
 	DisplayRightWall(2.0,2.0);
-	DisplayChair();
 	Draw_Door();
+	
+	glScalef(0.4f, 0.6f, 0.5f);
+	DisplayChair();
   
 	glFlush();
 }
