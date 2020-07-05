@@ -7,16 +7,16 @@ void DisplayBackWall()
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glBegin(GL_POLYGON);
         glColor3f(1.0f, 1.0f, 0.8f);
-        glVertex3f (-0.80, -0.15, 0.0);
+        glVertex3f (-0.60, -0.20, 0.0);
         
         glColor3f(1.0f, 1.0f, 0.8f);
-        glVertex3f (-0.80, 0.85, 0.0);
+        glVertex3f (-0.60, 0.85, 0.0);
         
         glColor3f(1.0f, 1.0f, 0.8f);
-        glVertex3f (0.80, 0.85, 0.0);    
+        glVertex3f (0.60, 0.85, 0.0);    
         
         glColor3f(1.0f, 1.0f, 0.8f);
-        glVertex3f (0.80, -0.15, 0.0);       
+        glVertex3f (0.60, -0.20, 0.0);       
     glEnd();
  
 }
@@ -77,13 +77,13 @@ void DiplayWindowSubsection()
     glLineWidth(2.0);
     glBegin(GL_LINES);
         glColor3f(0.5f, 0.2f, 0.0f);
-        glVertex3f (-0.198, -0.15, 0.0);
+        glVertex3f (-0.198, -0.20, 0.0);
         glVertex3f (-0.198, 0.65, 0.0);
     glEnd();
 
      glBegin(GL_LINES);
         glColor3f(0.5f, 0.2f, 0.0f);
-        glVertex3f (0.21, -0.15, 0.0);
+        glVertex3f (0.21, -0.20, 0.0);
         glVertex3f (0.21, 0.65, 0.0);
     glEnd();
    
