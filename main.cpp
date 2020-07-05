@@ -11,6 +11,7 @@
 #include "Ceiling.h"
 #include "Chair.h"
 #include "Draw_Door.h"
+#include "Carpet.h"
 
 #include "resource.h"
 
@@ -29,6 +30,7 @@ float alphaDoor = 0.0f;
 float scaleCarpet = 0.0f;
 float aplhaChairCarpet = 0.0f;
 float alphaChair = 0.0f;
+float yOffsetCarpet = -1.0f;
 
 // entry-point function
 int main(int argc, char** argv)
@@ -131,11 +133,16 @@ void display(void)
 	
 	Draw_Door(alphaDoor);
 
-	DrawTeachingBoard();
+	if (alphaDoor >= 1.0f)
+		DrawTeachingBoard();
 
 	glLoadIdentity();
 
-	//glTranslatef(0.0f, -0.4f, 0.0f);
+	glTranslatef(0.0f, yOffsetCarpet, 0.0f);
+	DisplayCarpet();
+
+	glLoadIdentity();
+
 	glScalef(1.0f, scaleCarpet, 1.0f);
 	DisplayChairCarpet(1.0f);
 	
@@ -222,7 +229,7 @@ void timerFunc(int speed)
 		/* floor */
 		case 3:
 			if (yOffsetFloor > 0.0f)
-				yOffsetFloor -= 0.01f;
+				yOffsetFloor -= 0.005f;
 			else
 			{
 				yOffsetFloor = 0.0f;
@@ -260,8 +267,13 @@ void timerFunc(int speed)
 
 		/* main carpet */
 		case 7:
-			state++;
-
+			if (yOffsetCarpet < 0.0f)
+				yOffsetCarpet += 0.01f;
+			else
+			{
+				yOffsetCarpet = 0.0f;
+				state++;
+			}
 		break;
 
 		/* carpet under chair */
@@ -285,6 +297,8 @@ void timerFunc(int speed)
 				state++;
 			}
 		break;
+
+
 	}
 
 
