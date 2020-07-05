@@ -1,8 +1,14 @@
 // header files
 #include <windows.h>
 #include <GL\freeglut.h>
+
 #include "Backwall.h"
 #include "Floor.h"
+#include "ChairCarpet.h"
+#include "TeachingBoard.h"
+#include "RightWall.h"
+#include "Ceiling.h"
+
 #include "resource.h"
 
 // libraries
@@ -74,11 +80,15 @@ void display(void)
 	
 
 	/* Add drawing parts here */
+	DisplayCeiling();
+
 	DisplayBackWall();
-        DisplayFloor();
+  DisplayFloor();
 	DisplayWindow();
-	//DisplayWindowShutters();
-         
+	DisplayChairCarpet();
+	DrawTeachingBoard();
+  DisplayRightWall(2.0,2.0);
+  
 	glFlush();
 }
 
