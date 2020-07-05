@@ -8,9 +8,6 @@ GLfloat borderColor[] = {0.35f, 0.35f, 0.25f};
 
 void DrawTeachingBoard(void)
 {
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-			
 	//Border 
 	glBegin(GL_QUADS);
 		glColor3fv(borderColor);

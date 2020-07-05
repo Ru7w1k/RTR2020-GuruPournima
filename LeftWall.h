@@ -42,8 +42,8 @@ void Draw_LeftWall()
 void Draw(Color color)
 {
 	// Function Declarations
-	Color Dark_Shade(Color);
-	Color Light_Shade(Color);
+	Color Dark_Shade();
+	Color Light_Shade();
 	void Draw_Vertex_2D(Color, Point);
 
 	// Variable declarations
@@ -58,8 +58,8 @@ void Draw(Color color)
 	float ceilingLeftY = 1.0;
 
 	// Top Right Ceiling coord
-	float ceilingRightX = ceilingLeftX + (2.0f * 0.2f);	// 20%
-	float ceilingRightY = ceilingLeftY - (2.0f * 0.15);	// 15%
+	float ceilingRightX = ceilingLeftX + (2.0f * 0.2f);     // 20%
+	float ceilingRightY = 0.85f;     // 15%
 
 	// Bottom Left Floor coord
 	float floorRightX = ceilingLeftX;
@@ -69,8 +69,9 @@ void Draw(Color color)
 	float floorLeftX = ceilingRightX;	// 20%
 	float floorLeftY = 1.0 - (2.0f * 0.6f);	// 60%
 
-	Color lightColor = Light_Shade(color);
-	Color darkColor = Dark_Shade(color);
+	Color lightColor = Light_Shade();
+	Color darkColor = Dark_Shade();
+
 	//Color debugColor = {1.0f, 0.0f, 0.0f};
 	//Color debugColor2 = {1.0f, 0.0f, 1.0f};
 
@@ -107,75 +108,20 @@ void Draw_Vertex_2D(const Color color, Point point)
 }
 
 /**
-  Gives Darker shade of this color 
-  (shade (by how many units) is defined globally)
-  Color c : color to be shaded
+  Gives Darker shade
 **/
-Color Dark_Shade(Color c)
+Color Dark_Shade()
 {
-	float Subtract(float, float);
-
-	c.r = Subtract(c.r, shade);
-	c.g = Subtract(c.g, shade);
-	c.b = Subtract(c.b, shade);
-
+	Color c = { 1.0f, 1.0f, 0.8f };
 	return c;
 }
 
 /**
-  Method to subtract the number & check,
-  if its lower than threshold (0.0) then return threshold 
-  else the added number.
-  num : the number from which to subtract the value
-  c : the value to be subtracted
+  Gives Lighter shade
 **/
-float Subtract(float num, const float c)
+Color Light_Shade()
 {
-	num -= c;
-	const float lowest = 0.0f;
-	if (lowest < num)
-	{
-		return num;
-	}
-	else
-	{
-		return lowest;
-	}
-}
-
-/**
-  Gives Lighter shade of this color 
-  (shade (by how many units) is defined globally)
-  Color c : color to be shaded
-**/
-Color Light_Shade(Color c)
-{
-	float Add(float, float);
-
-	c.r = Add(c.r, shade);
-	c.g = Add(c.g, shade);
-	c.b = Add(c.b, shade);
+	Color c = { 0.92f, 0.92f, 0.75f };
 
 	return c;
-}
-
-/**
-  Method to add the number & check, 
-  if its higher than threshold (1.0) then return threshold 
-  else the added number
-  num : the number into which to add the value
-  c : the value to be added
-**/
-float Add(float num, const float c)
-{
-	num += c;
-	const float highest = 1.0f;
-	if (highest > num)
-	{
-		return num;
-	}
-	else
-	{
-		return highest;
-	}
 }

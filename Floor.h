@@ -1,6 +1,4 @@
 
-#include <GL\freeglut.h>
-
 void DisplayFloor() {
 
 	glBegin(GL_QUADS);

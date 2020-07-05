@@ -9,6 +9,7 @@
 #include "RightWall.h"
 #include "LeftWall.h"
 #include "Ceiling.h"
+#include "Draw_Door.h"
 
 #include "resource.h"
 
@@ -84,13 +85,15 @@ void display(void)
 	DisplayCeiling();
 
 	DisplayBackWall();
-  DisplayFloor();
+  	DisplayFloor();
 	DisplayWindow();
 	DisplayChairCarpet();
 	DrawTeachingBoard();
+
 	Draw_LeftWall();
-  DisplayRightWall(2.0,2.0);
-  
+	DisplayRightWall(2.0, 2.0);
+
+	Draw_Door();  
 	glFlush();
 }
 
