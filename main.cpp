@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <GL\freeglut.h>
 #include "Backwall.h"
+#include "ChairCarpet.h"
 
 #include "resource.h"
 
@@ -77,6 +78,7 @@ void display(void)
 	DisplayBackWall();
 	DisplayWindow();
 	//DisplayWindowShutters();
+	DisplayChairCarpet();
 
 	glFlush();
 }
