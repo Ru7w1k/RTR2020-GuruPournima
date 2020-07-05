@@ -2,8 +2,9 @@
 #include <windows.h>
 #include <GL\freeglut.h>
 #include "Backwall.h"
-#include "RightWall.h"
+#include "TeachingBoard.h"
 #include "resource.h"
+#include "RightWall.h"
 
 // libraries
 #pragma comment(lib, "winmm.lib") // for PlaySound()
@@ -74,10 +75,13 @@ void display(void)
 	
 
 	/* Add drawing parts here */
+
 	DisplayBackWall();
 	DisplayWindow();
 	//DisplayWindowShutters();
-	DisplayRightWall(2.0,2.0);
+	DrawTeachingBoard();
+  DisplayRightWall(2.0,2.0);
+  
 	glFlush();
 }
 
