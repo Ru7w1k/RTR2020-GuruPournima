@@ -17,29 +17,21 @@ typedef struct Color Color;
 typedef struct Point Point;
 
 /**
-  shade of difference. Commonly defined.
-**/
-const float shade = 30.0f / 255.0f;	// add/subtract 50 to each r, g, b value
-
-/**
   Draws LeftWall
 **/
 void Draw_LeftWall()
 {
 	// Function prototypes
-	void Draw(Color);
-
-	// variable declarations
-	Color gold = {1.0f, 0.843f, 0.0f};
+	void Draw();
 
 	glBegin(GL_QUADS);
 	{
-		Draw(gold);
+		Draw();
 	}
 	glEnd();
 }
 
-void Draw(Color color)
+void Draw()
 {
 	// Function Declarations
 	Color Dark_Shade();
@@ -82,7 +74,6 @@ void Draw(Color color)
 	// Top Right Ceiling coord
 	ceilingRight = {ceilingRightX, ceilingRightY, 0.0f};
 	Draw_Vertex_2D(lightColor, ceilingRight);
-	//Draw_Vertex_2D(debugColor2, ceilingRight);
 
 	// Bottom Left Floor coord
 	floorLeft = {floorLeftX, floorLeftY, 0.0f};
@@ -91,7 +82,6 @@ void Draw(Color color)
 	// Bottom Right Floor coord
 	floorRight = {floorRightX, floorRightY, 0.0f};
 	Draw_Vertex_2D(lightColor, floorRight);
-	//Draw_Vertex_2D(debugColor, floorRight);
 
 	return;
 }
