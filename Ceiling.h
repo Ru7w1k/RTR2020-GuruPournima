@@ -7,10 +7,10 @@ void DisplayCeiling()
 		glColor3f(0.19f, 0.17f, 0.17f);
 		glVertex3f(-0.8f, 0.85f, 0.0f);
 		
-		glColor3f(0.66f, 0.66f, 0.66f);
+		glColor3f(0.36f, 0.36f, 0.36f);
 		glVertex3f(-1.0f, 1.0f, 0.0f);
 		
-		glColor3f(0.66f, 0.66f, 0.66f);
+		glColor3f(0.36f, 0.36f, 0.36f);
 		glVertex3f(1.0f, 1.0f, 0.0f);
 		
 		glColor3f(0.19f, 0.17f, 0.17f);
